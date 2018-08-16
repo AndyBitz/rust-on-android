@@ -46,7 +46,7 @@ You can use any method you like, but here is an example with `adb`, a tool made 
 6. Allow execution: `chmod 750 /system/rust-on-android`.
 7. Execute: `./system/rust-on-android`. And you are done.
 
-> I used `/system` but any folder will to fine, as long as it allows execution and is writeable.
+> I used `/system` but any folder will do fine, as long as it allows execution and is writeable.
 
 
 ## Why

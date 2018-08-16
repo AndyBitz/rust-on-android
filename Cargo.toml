@@ -1,0 +1,6 @@
+[package]
+name = "rust-build-test"
+version = "0.1.0"
+authors = ["Andy Bitz <artzbitz@gmail.com>"]
+
+[dependencies]

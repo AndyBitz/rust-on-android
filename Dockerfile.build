@@ -1,0 +1,27 @@
+FROM ubuntu:18.04 as builder
+
+# install git and other apps
+RUN apt -qq update && apt -qq -y install git curl make wget xz-utils gcc g++
+
+# install the linker for the target
+WORKDIR /opt/musl
+
+ENV TARGET arm-linux-musleabihf
+RUN git clone --depth=1 https://github.com/richfelker/musl-cross-make .
+RUN make
+RUN make install
+
+# download and install rust and the target
+WORKDIR /root
+RUN curl https://sh.rustup.rs -sSf | sh -s -- \
+  -y --default-toolchain 1.28.0 && /root/.cargo/bin/rustup target add armv7-unknown-linux-musleabihf
+
+
+FROM ubuntu:18.04
+
+# copy rust and target
+COPY --from=builder /root/ /root/
+ENV PATH "/root/.cargo/bin:${PATH}"
+
+# copy the linker from the build stage
+COPY --from=builder /opt/musl/output/ /

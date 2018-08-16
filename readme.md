@@ -23,12 +23,12 @@ Build the required Docker Image. This can take a while and might fail sometimes,
 
 After the build completes you can just build your executuable.
 ```
-./build
+./build.sh
 ```
 
 Or for production:
 ```
-./build --release
+./build.sh --release
 ```
 
 Every argument will just get passed on to `cargo build`.

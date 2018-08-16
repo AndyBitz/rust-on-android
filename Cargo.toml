@@ -1,5 +1,5 @@
 [package]
-name = "rust-build-test"
+name = "rust-on-android"
 version = "0.1.0"
 authors = ["Andy Bitz <artzbitz@gmail.com>"]
 
